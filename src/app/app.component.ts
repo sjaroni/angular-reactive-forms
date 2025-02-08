@@ -46,4 +46,9 @@ export class AppComponent implements OnInit{
     );
     this.isSubmitted = true;
   }
+
+  isFieldValid(fieldName: string): boolean {
+    const control = this.registerForm.get(fieldName);
+    return !!(control?.invalid && (control?.dirty || control?.touched || this.isSubmitted));
+  }
 }
